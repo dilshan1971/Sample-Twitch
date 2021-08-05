@@ -58,6 +58,7 @@ namespace Sample.Api
                 });
 
                 mt.AddRequestClient<SubmitOrder>(new Uri($"queue:{KebabCaseEndpointNameFormatter.Instance.Consumer<SubmitOrderConsumer>()}"));
+                mt.AddRequestClient<PingRequest>(new Uri($"queue:{KebabCaseEndpointNameFormatter.Instance.Consumer<PingConsumer>()}"));
 
                 mt.AddRequestClient<CheckOrder>();
             });
@@ -73,6 +74,8 @@ namespace Sample.Api
             services.AddOpenApiDocument(cfg => cfg.PostProcess = d => d.Info.Title = "Sample API Site");
 
             services.AddControllers();
+            services.AddSwaggerGen();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

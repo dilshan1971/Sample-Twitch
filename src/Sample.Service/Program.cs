@@ -73,6 +73,7 @@
                     services.AddMassTransit(cfg =>
                     {
                         cfg.AddConsumersFromNamespaceContaining<SubmitOrderConsumer>();
+                        cfg.AddConsumersFromNamespaceContaining<PingConsumer>();
                         cfg.AddActivitiesFromNamespaceContaining<AllocateInventoryActivity>();
 
                         cfg.AddSagaStateMachine<OrderStateMachine, OrderState>(typeof(OrderStateMachineDefinition))
